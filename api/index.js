@@ -26,6 +26,11 @@ mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.error('Erro ao conectar ao MongoDB:', err);
     process.exit(1); // Finaliza o processo caso a conexão falhe
   });
+ 
+
+
+
+  app.get('/', (req, res) => res.status(200).json({ message: 'API rodando com sucesso!' }));
 
 // Rota para listar todos os produtos
 app.post('/api/products', async (req, res) => {

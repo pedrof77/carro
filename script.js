@@ -5,7 +5,7 @@ let products = [];
 // Função para buscar produtos do backend
 async function fetchProducts() {
   try {
-    const response = await fetch("http://localhost:3000/api/products");
+    const response = await fetch("https://carro-jet.vercel.app/api/products");
     if (!response.ok) {
       throw new Error("Erro ao buscar produtos");
     }
