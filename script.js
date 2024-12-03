@@ -35,7 +35,7 @@ function displayProducts(productsToDisplay) {
     productCard.className = "product-card";
 
     productCard.innerHTML = `
-      <img src="https://via.placeholder.com/250" alt="${product.nome}">
+      
       <h3>${product.nome}</h3>
       <p>${product.descricao}</p>
       <p><strong>R$ ${product.preco.toFixed(2)}</strong></p>
@@ -63,10 +63,28 @@ function filterProducts(category) {
 }
 
 // Função para adicionar um produto ao carrinho
+// Função para adicionar um produto ao carrinho
 function addToCart(productId) {
   const product = products.find((p) => p._id === productId);
   if (product) {
-    cart.push(product);
+    const cartItem = cart.find((item) => item._id === productId);
+    if (cartItem) {
+      cartItem.quantity += 1; // Incrementa a quantidade
+    } else {
+      cart.push({ ...product, quantity: 1 }); // Adiciona o produto com quantidade 1
+    }
+    updateCart();
+  }
+}
+
+// Função para remover uma unidade do carrinho
+function removeFromCart(productId) {
+  const cartItemIndex = cart.findIndex((item) => item._id === productId);
+  if (cartItemIndex > -1) {
+    cart[cartItemIndex].quantity -= 1; // Decrementa a quantidade
+    if (cart[cartItemIndex].quantity <= 0) {
+      cart.splice(cartItemIndex, 1); // Remove o item se a quantidade for 0
+    }
     updateCart();
   }
 }
@@ -79,22 +97,16 @@ function updateCart() {
   let total = 0;
 
   cart.forEach((item) => {
-    total += item.preco;
+    total += item.preco * item.quantity; // Calcula o total com base na quantidade
     const cartItem = document.createElement("li");
     cartItem.innerHTML = `
-      ${item.nome} - R$ ${item.preco.toFixed(2)}
-      <button onclick="removeFromCart('${item._id}')">X</button>
+      ${item.nome} - R$ ${item.preco.toFixed(2)} x ${item.quantity}
+      <button onclick="removeFromCart('${item._id}')">Remover 1</button>
     `;
     cartList.appendChild(cartItem);
   });
 
   cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
-}
-
-// Função para remover um item do carrinho
-function removeFromCart(productId) {
-  cart = cart.filter((item) => item._id !== productId);
-  updateCart();
 }
 
 // Função para finalizar a compra

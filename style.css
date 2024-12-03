@@ -176,31 +176,109 @@ footer {
 }
 
 
+/* Estilização do card */
 .product-card {
-  border: 1px solid #ddd;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
   padding: 16px;
   margin: 16px;
   text-align: center;
-  background-color: #f9f9f9;
+  background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom right, #ffffff, #eaeaea);
+}
+
+/* Imagem do produto */
 .product-card img {
   width: 100%;
   height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
 }
 
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Título do produto */
+.product-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 8px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Descrição do produto */
+.product-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+/* Preço em destaque */
+.product-card p strong {
+  color: #28a745;
+  font-size: 1.2rem;
+}
+
+/* Estoque */
+.product-card p:last-child {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Botão */
+button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  background-color: #1e7e34;
+  transform: translateY(0);
+}
+
+/* Estilo para o carrinho */
 #cart {
-  list-style-type: none;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 #cart li {
-  padding: 8px 0;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
 }
 
-button {
-  background-color: #28a745;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
+#cart li:last-child {
+  border-bottom: none;
 }
