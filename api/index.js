@@ -32,6 +32,19 @@ mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
   app.get('/', (req, res) => res.status(200).json({ message: 'API rodando com sucesso!' }));
 
+
+
+  // Rota para listar todos os produtos
+app.get('/api/products', async (req, res) => {
+    try {
+      const products = await Product.find(); // Busca todos os produtos
+      res.status(200).json(products); // Retorna os produtos no formato JSON
+    } catch (err) {
+      console.error('Erro ao buscar produtos:', err); // Log para depuração
+      res.status(500).json({ error: 'Erro ao buscar produtos' });
+    }
+  });
+  
 // Rota para listar todos os produtos
 app.post('/api/products', async (req, res) => {
     const produtos = req.body; // Agora esperamos um array de produtos
