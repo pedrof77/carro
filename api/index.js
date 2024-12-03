@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json()); // Para poder receber JSON no corpo das requisições
 
 // Variáveis de ambiente (Recomenda-se usar um arquivo .env)
-const DB_URI = process.env.DB_URI || 'mongodb+srv://augustopietro482:88323571@cluster0.991nw.mongodb.net/ecommerce?retryWrites=true&w=majority'; // Defina a URL do MongoDB aqui
+const DB_URI = process.env.DB_URI || 'mongodb+srv://12345678:87654321@suplementosdb.rcrky.mongodb.net/'; // Defina a URL do MongoDB aqui
 
 // Conectar ao MongoDB
 mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
